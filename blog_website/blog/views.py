@@ -25,3 +25,7 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'blog/register.html', {'form': form})
+
+
+def home(request):  # This function must exist!
+    return render(request, 'blog/home.html')
