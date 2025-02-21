@@ -22,7 +22,30 @@ class Post(models.Model):
     def __str__(self):
         """Method to return the post title."""
         return self.title
-    
 
+# Comment Model
+class Comment(models.Model):
+    """Class representing a comment on a blog post."""
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    name = models.CharField(max_length=100)
+    email =  models.EmailField(blank=True, null=True)
+    body = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=True)
+    
+    def __str__(self):
+        """Return the comment on the blog post."""
+        return f"Comment by {self.name} on {self.post.title}"   
+
+# Profile Model
+class Profile(models.Model):
+    """A class representing user profiles."""
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    bio = models.TextField(blank=True)
+    profile_picture = models.ImageField(upload_to='profile_pics/', blank=True)
+    
+    def __str__(self):
+        """Return the user's username"""
+        return f"{self.user.username}"
 
 
