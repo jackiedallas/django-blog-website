@@ -2,17 +2,11 @@ from django.shortcuts import render, redirect  # type: ignore
 from django.contrib.auth import login  # type: ignore
 from django.contrib.auth.forms import UserCreationForm  # type: ignore
 
-# Create your views here.
-
-# Landing Page
-
 
 def landing_page(request):
     if request.user.is_authenticated:
         return redirect('home')  # redirect logged in users to home page
     return render(request, 'blog/landing.html')
-
-# registration page
 
 
 def register(request):
@@ -29,3 +23,7 @@ def register(request):
 
 def home(request):  # This function must exist!
     return render(request, 'blog/home.html')
+
+
+def profile(request):
+    return render(request, 'blog/profile.html')

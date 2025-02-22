@@ -13,12 +13,24 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'landing' %}">My Blog</a>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'landing' %}">Home</a>
+            <div class="navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'profile' %}">My Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Me</a>
+                    </li>
+                </ul>
+            </div>
+            
+            
             
             <div class="ml-auto">
                 {% if user.is_authenticated %}
-                    <span>Welcome, {{ user.username }}</span>
+                    <!-- <span>Welcome, {{ user.username }}</span> -->
                     <form method="post" action="{% url 'logout' %}" style="display: inline;">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger">Logout</button>
@@ -41,3 +53,6 @@
     {% block extra_js %}{% endblock %}
 </body>
 </html>
+
+
+
