@@ -4,18 +4,24 @@
 <div class="container">
     <h2>{{ user.username }}'s Profile</h2>
 
-    {% if user == request.user %}
-        <!-- Blog Post Form -->
-        <h3>Create a New Post</h3>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-success">Post</button>
-        </form>
-    {% endif %}
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{ profile.profile_picture.url }}" class="img-fluid rounded-circle" alt="Profile Picture">  <!-- ✅ Display Profile Picture -->
+        </div>
+        <div class="col-md-8">
+            {% if user == request.user %}
+                <form method="post" enctype="multipart/form-data">  <!-- ✅ Form to update picture -->
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-success">Update Profile</button>
+                </form>
+            {% endif %}
+        </div>
+    </div>
 
-    <!-- Display User's Blog Posts -->
-    <h3 class="mt-4">Blog Posts</h3>
+    <hr>
+
+    <h3>Blog Posts</h3>
     {% for post in posts %}
         <div class="card mb-3">
             <div class="card-body">

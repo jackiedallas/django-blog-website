@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Post, Comment
-from .forms import PostForm, CommentForm
+from .models import Post, Comment, Profile
+from .forms import PostForm, CommentForm, ProfileUpdateForm
+from django.contrib.auth.decorators import login_required
 
 
 def landing_page(request):
@@ -32,27 +33,25 @@ def home(request):
     posts = Post.objects.filter(published=True).order_by('-created_at')
     return render(request, 'blog/home.html', {'posts': posts})
 
-
+@login_required
 def profile(request, username):
-    """View to handle user profile and their posts."""
+    """View to display and update user profile."""
     user = get_object_or_404(User, username=username)
+    profile, created = Profile.objects.get_or_create(user=user)  # ✅ Ensure profile exists
     posts = Post.objects.filter(author=user).order_by('-created_at')
 
-    form = None  # Default to None for users who cannot post
+    form = None  # ✅ Ensure form is always defined
 
     if request.user == user:
         if request.method == 'POST':
-            form = PostForm(request.POST)
+            form = ProfileUpdateForm(request.POST, request.FILES, instance=profile)  # ✅ Handle image uploads
             if form.is_valid():
-                post = form.save(commit=False)
-                post.author = request.user
-                post.save()
-                # ✅ Fixed redirect
-                return redirect('profile', username=request.user.username)
+                form.save()
+                return redirect('profile', username=user.username)  # ✅ Refresh profile page
         else:
-            form = PostForm()
+            form = ProfileUpdateForm(instance=profile)  # ✅ Assign form even if no submission
 
-    return render(request, 'blog/profile.html', {'user': user, 'posts': posts, 'form': form})
+    return render(request, 'blog/profile.html', {'user': user, 'profile': profile, 'posts': posts, 'form': form})
 
 
 def post_detail(request, slug):
