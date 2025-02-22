@@ -10,11 +10,7 @@
         </div>
         <div class="col-md-8">
             {% if user == request.user %}
-                <form method="post" enctype="multipart/form-data">  <!-- ✅ Form to update picture -->
-                    {% csrf_token %}
-                    {{ form.as_p }}
-                    <button type="submit" class="btn btn-success">Update Profile</button>
-                </form>
+                <a href="{% url 'profile_settings' %}" class="btn btn-primary">Edit Profile</a>
             {% endif %}
         </div>
     </div>
