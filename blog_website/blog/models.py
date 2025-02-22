@@ -25,13 +25,6 @@ class Post(models.Model):
         """Method to return the post title."""
         return self.title
 
-# Comment Model
-
-
-# def get_default_user():
-#     """Returns the first user in the database as default"""
-#     return User.objects.first().id
-
 
 class Comment(models.Model):
     """Class representing a comment on a blog post."""
@@ -47,14 +40,12 @@ class Comment(models.Model):
         """Return the comment on the blog post."""
         return f"Comment by {self.author.username} on {self.post.title}"
 
-# Profile Model
-
 
 class Profile(models.Model):
     """A class representing user profiles."""
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(blank=True)
-    profile_picture = models.ImageField(upload_to='profile_pics/', blank=True)
+    profile_picture = models.ImageField(upload_to='profile_pics/', blank=True, default='profile_pics/default.jpg')
 
     def __str__(self):
         """Return the user's username"""
