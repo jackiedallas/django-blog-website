@@ -53,6 +53,20 @@ def profile(request, username):
 
     return render(request, 'blog/profile.html', {'user': user, 'profile': profile, 'posts': posts, 'form': form})
 
+@login_required
+def profile_settings(request):
+    """View to allow users to update their profile."""
+    profile, created = Profile.objects.get_or_create(user=request.user) # ensure profile exists
+    
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile', username=request.user.username)
+    else:
+        form = ProfileUpdateForm(instance=profile)
+    return render(request, 'blog/profile_settings.html', {'form': form})
+
 
 def post_detail(request, slug):
     """View to display a full blog post and its comments."""
