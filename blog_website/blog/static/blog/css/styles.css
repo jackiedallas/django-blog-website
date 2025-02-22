@@ -1,0 +1,14 @@
+#profileDropdown {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    
+}
+
+#me-dropdown {
+    font-size: x-small;
+    flex: auto;
+    /* padding: 5px; */
+    /* flex: auto; */
+    /* flex-direction: row; */
+}
