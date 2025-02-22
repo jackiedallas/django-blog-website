@@ -4,11 +4,11 @@
 <div class="container">
     <h2>{{ user.username }}</h2>
 
-    <div class="row">
-        <div class="col-md-4">
-            <img src="{{ profile.profile_picture.url }}" class="img-fluid rounded-circle" alt="Profile Picture">  <!-- ✅ Display Profile Picture -->
+    <div class="container-fluid" id="top-profile-div">
+        <div class="top-profile-div-child">
+            <img src="{{ profile.profile_picture.url }}" class="rounded-circle" alt="Profile Picture" height="100" width="100">
         </div>
-        <div class="col-md-8">
+        <div class="top-profile-div-child">
             {% if user == request.user %}
                 <a href="{% url 'profile_settings' %}" class="btn btn-primary">Edit Profile</a>
             {% endif %}
@@ -17,7 +17,10 @@
 
     <hr>
 
-    <h3>Blog Posts</h3>
+    <div>
+
+    </div>
+    <h4>Activity</h4>
     {% for post in posts %}
         <div class="card mb-3">
             <div class="card-body">

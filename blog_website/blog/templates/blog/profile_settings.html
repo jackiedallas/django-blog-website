@@ -4,7 +4,7 @@
 <div class="container">
     <h2>Profile Settings</h2>
 
-    <form method="post" enctype="multipart/form-data">  <!-- ✅ Allow image uploads -->
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-success">Save Changes</button>

@@ -16,23 +16,23 @@
 
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid d-flex justify-content-between align-items-center">
+            <div class="container-fluid d-flex align-items-center" id="position-nav-items">
 
                 <!-- left brand -->
-                <div class="navbar-brand">
+                <div class="navbar-brand" id="position-nav-links">
                     <a class="" href="#">
                         <img src="{% static 'blog/images/python-icon.png' %}" alt="Home">
                     </a>
                 </div>
                 {% if user.is_authenticated %}
                 <!-- center feed icon -->
-                <div class="">
+                <div class="" id="position-nav-links">
                     <a href="{% url 'landing' %}" class="nav-link" aria-current="page">
                         <img src="{% static 'blog/images/feed-icon.png' %}" alt="Feed" height="25" width="25">
                     </a>
                 </div>
                 <!-- right profile icon -->
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center position-nav-link-dropdown" id="position-nav-links">
                     <div class="dropdown text-center">
                         <!-- Profile Picture (Centered) -->
                         <img src="{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% else %}{% static 'blog/icons/default-profile.png' %}{% endif %}"
