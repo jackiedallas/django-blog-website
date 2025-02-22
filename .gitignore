@@ -172,3 +172,5 @@ cython_debug/
 
 # vsCode config files
 .vscode/
+
+/blog_website/media/
