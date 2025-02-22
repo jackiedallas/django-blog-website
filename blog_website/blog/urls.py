@@ -1,9 +1,10 @@
-from django.urls import path  # type: ignore
-from . import views  # Import views only from the `blog` app
+from django.urls import path
+from . import views
 
 urlpatterns = [
     path('', views.landing_page, name='landing'),
     path('home/', views.home, name='home'),
     path('register/', views.register, name='register'),
-    path('profile/', views.profile, name='profile')
+    path('profile/<str:username>/', views.profile, name='profile'),
+    path('post/<slug:slug>/', views.post_detail, name='post_detail'),  # ✅ Add this for post details
 ]

@@ -1,10 +1,31 @@
 {% extends "blog/base.html" %}
 
 {% block content %}
-<div class="container mt-5">
-    {% if user.is_authenticated %}
-        <h2 class="text-center">{{ user.username }}</h2>
+<div class="container">
+    <h2>{{ user.username }}'s Profile</h2>
+
+    {% if user == request.user %}
+        <!-- Blog Post Form -->
+        <h3>Create a New Post</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Post</button>
+        </form>
     {% endif %}
-    
+
+    <!-- Display User's Blog Posts -->
+    <h3 class="mt-4">Blog Posts</h3>
+    {% for post in posts %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h4 class="card-title">{{ post.title }}</h4>
+                <p class="card-text">{{ post.content }}</p>
+                <small class="text-muted">Posted on {{ post.created_at }}</small>
+            </div>
+        </div>
+    {% empty %}
+        <p>No posts yet.</p>
+    {% endfor %}
 </div>
 {% endblock %}
