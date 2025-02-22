@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Post
-from .forms import PostForm
+from .models import Post, Comment
+from .forms import PostForm, CommentForm
 
 
 def landing_page(request):
@@ -58,4 +58,22 @@ def profile(request, username):
 def post_detail(request, slug):
     """View to display a full blog post."""
     post = get_object_or_404(Post, slug=slug)
-    return render(request, 'blog/post_detail.html', {'post': post})
+    comments = post.comments.filter(approved=True).order_by('-created_at')
+    form = CommentForm()
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.save()
+            return redirect('post_detail', slug=post.slug)
+
+    return render(request,
+                  'blog/post_detail.html',
+                  {
+                      'post': post,
+                      'comments': comments,
+                      'form': form
+                  }
+                  )
