@@ -12,36 +12,31 @@
 </head>
 <body>
     <!-- Navbar -->
+    
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="{% url 'landing' %}">Home</a>
-            <div class="navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'profile' %}">My Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About Me</a>
-                    </li>
-                </ul>
-            </div>
-            
-            
-            
-            <div class="ml-auto">
-                {% if user.is_authenticated %}
-                    <!-- <span>Welcome, {{ user.username }}</span> -->
+            {% if user.is_authenticated %}
+                <div class="navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{% url 'profile' %}">My Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About Me</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="ml-auto">
                     <form method="post" action="{% url 'logout' %}" style="display: inline;">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger">Logout</button>
                     </form>
-                {% else %}
-                    <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
-                    <a href="{% url 'register' %}" class="btn btn-success">Register</a>
-                {% endif %}
-            </div>
+                </div>
+            {% endif %}
         </div>
     </nav>
+    
 
     <div class="container mt-4">
         {% block content %}{% endblock %}
