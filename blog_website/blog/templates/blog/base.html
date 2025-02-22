@@ -2,107 +2,70 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My Blog{% endblock %}</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}My Blog{% endblock %}</title>
 
-    <!-- Bootstrap CSS (CDN) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'blog/css/styles.css' %}">
+        <!-- Bootstrap CSS (CDN) -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'blog/css/styles.css' %}">
 
-    {% block extra_css %}{% endblock %}
-</head>
+        {% block extra_css %}{% endblock %}
+    </head>
 
-<body>
-    <!-- Navbar -->
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid d-flex justify-content-between align-items-center">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-
-            <!-- left brand -->
-            <div class="navbar-brand">
-                <a class="" href="#">
-                    <img src="{% static 'blog/images/python-icon.png' %}" alt="Home">
-                </a>
-            </div>
-
-            {% if user.is_authenticated %}
-            <!-- center feed icon -->
-            <div class="">
-                <a href="{% url 'landing' %}" class="nav-link" aria-current="page">
-                    <img src="{% static 'blog/images/feed-icon.png' %}" alt="Feed" height="25" width="25">
-                </a>
-            </div>
-
-
-            <!-- right profile icon -->
-            <div class="d-flex align-items-center">
-                <div class="dropdown text-center">
-                    <!-- Profile Picture (Centered) -->
-                    <img src="{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% else %}{% static 'blog/icons/default-profile.png' %}{% endif %}"
-                    alt="Profile" class="rounded-circle" width="25" height="25">
-                    <button class="dropdown-toggle border-0 bg-transparent" type="button" id="profileDropdown"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <!-- "Me" and Dropdown Arrow in One Row -->
-                        <span class="" id="me-dropdown">Me</span>
-                    </button>
-
-                    <ul class="dropdown-menu dropdown-menu-end text-center" aria-labelledby="profileDropdown">
-                        <li><a class="dropdown-item" href="{% url 'profile' user.username %}">View Profile</a></li>
-                        <li><a class="dropdown-item" href="{% url 'profile_settings' %}">Settings</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <form method="post" action="{% url 'logout' %}" class="dropdown-item">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-link text-danger w-100">Logout</button>
-                            </form>
-                        </li>
-                    </ul>
+                <!-- left brand -->
+                <div class="navbar-brand">
+                    <a class="" href="#">
+                        <img src="{% static 'blog/images/python-icon.png' %}" alt="Home">
+                    </a>
                 </div>
+                {% if user.is_authenticated %}
+                <!-- center feed icon -->
+                <div class="">
+                    <a href="{% url 'landing' %}" class="nav-link" aria-current="page">
+                        <img src="{% static 'blog/images/feed-icon.png' %}" alt="Feed" height="25" width="25">
+                    </a>
+                </div>
+                <!-- right profile icon -->
+                <div class="d-flex align-items-center">
+                    <div class="dropdown text-center">
+                        <!-- Profile Picture (Centered) -->
+                        <img src="{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% else %}{% static 'blog/icons/default-profile.png' %}{% endif %}"
+                            alt="Profile" class="rounded-circle" width="25" height="25">
+                        <button class="dropdown-toggle border-0 bg-transparent" type="button" id="profileDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <!-- "Me" and Dropdown Arrow in One Row -->
+                            <span class="" id="me-dropdown">Me</span>
+                        </button>
 
-
+                        <ul class="dropdown-menu dropdown-menu-end text-center" aria-labelledby="profileDropdown">
+                            <li><a class="dropdown-item" href="{% url 'profile' user.username %}">View Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'profile_settings' %}">Settings</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <form method="post" action="{% url 'logout' %}" class="dropdown-item">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-link text-danger w-100">Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
             </div>
-
-
-            <!-- <div class="d-flex flex-grow-1 justify-content-center" id="navbarSupportedContent">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="{% url 'landing' %}" class="nav-link" aria-current="page">
-                            <img src="{% static 'blog/images/feed-icon.png' %}" alt="Feed" height="25" width="25">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="{% url 'profile' user.username %}">
-                            <img src="{% static 'blog/images/profile-icon.png' %}" alt="Profile" height="25" width="25">
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                            <a class="nav-link" href="#">About Me</a>
-                        </li>
-                </ul>
-            </div> -->
-            <!-- <div class="d-flex align-items-center">
-                    <form method="post" action="{% url 'logout' %}" style="display: inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Logout</button>
-                    </form>
-                </div> -->
-            {% endif %}
+        </nav>
+        <div class="container mt-4">
+            {% block content %}{% endblock %}
         </div>
-    </nav>
-
-
-    <div class="container mt-4">
-        {% block content %}{% endblock %}
-    </div>
-
-    <!-- Bootstrap JS (optional, for components like modals) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    {% block extra_js %}{% endblock %}
-</body>
-
+        <!-- Bootstrap JS (optional, for components like modals) -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        {% block extra_js %}{% endblock %}
+    </body>
 </html>
