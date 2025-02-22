@@ -28,19 +28,24 @@ class Post(models.Model):
 # Comment Model
 
 
+# def get_default_user():
+#     """Returns the first user in the database as default"""
+#     return User.objects.first().id
+
+
 class Comment(models.Model):
     """Class representing a comment on a blog post."""
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="comments")
-    name = models.CharField(max_length=100)
-    email = models.EmailField(blank=True, null=True)
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE)
     body = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     approved = models.BooleanField(default=True)
 
     def __str__(self):
         """Return the comment on the blog post."""
-        return f"Comment by {self.name} on {self.post.title}"
+        return f"Comment by {self.author.username} on {self.post.title}"
 
 # Profile Model
 
@@ -53,4 +58,4 @@ class Profile(models.Model):
 
     def __str__(self):
         """Return the user's username"""
-        return f"{self.user.username}"
+        return f"Comment by {self.author.username} on {self.post.title}"
