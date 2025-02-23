@@ -92,27 +92,27 @@ body {
     margin-bottom: 10px;
 }
 
-/* ✅ Landing Page Container */
+/*  Landing Page Container */
 #landing-container {
-    margin-top: 120px;  /* ✅ Matches profile/home section spacing */
+    margin-top: 120px;  /*  Matches profile/home section spacing */
     margin-bottom: 80px;
-    max-width: 600px;  /* ✅ Keeps content compact */
+    max-width: 600px;  /*  Keeps content compact */
 }
 
-/* ✅ Navigation Pills Styling */
+/*  Navigation Pills Styling */
 #landing-nav .nav-link {
     font-size: 1rem;
-    padding: 10px 20px;  /* ✅ Increases button size */
+    padding: 10px 20px;  /*  Increases button size */
     border-radius: 8px;
 }
 
 #landing-nav .nav-link.active {
-    background-color: #7D6E57;  /* ✅ Matches the warm brown UI theme */
+    background-color: #7D6E57;  /*  Matches the warm brown UI theme */
     color: white;
 }
 
 #landing-nav .nav-link.border {
-    border: 2px solid #7D6E57;  /* ✅ Outlined button for Register */
+    border: 2px solid #7D6E57;  /*  Outlined button for Register */
     color: #7D6E57;
     background-color: transparent;
 }
@@ -122,23 +122,23 @@ body {
     color: white;
 }
 
-/* ✅ Login Page Container */
+/*  Login Page Container */
 #login-container {
-    margin-top: 120px;  /* ✅ Matches landing/profile/home sections */
+    margin-top: 120px;  /*  Matches landing/profile/home sections */
     margin-bottom: 80px;
-    max-width: 400px;  /* ✅ Keeps it centered and compact */
+    max-width: 400px;  /*  Keeps it centered and compact */
     padding: 30px;
-    background-color: #FEFDFB;  /* ✅ Matches card background */
+    background-color: #FEFDFB;  /*  Matches card background */
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* ✅ Subtle shadow */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /*  Subtle shadow */
 }
 
-/* ✅ Login Form Styling */
+/*  Login Form Styling */
 #login-container form {
     text-align: left;
 }
 
-/* ✅ Style Form Fields */
+/*  Style Form Fields */
 #login-container input {
     width: 100%;
     padding: 10px;
@@ -146,17 +146,17 @@ body {
     border-radius: 5px;
 }
 
-/* ✅ Button Styling */
+/*  Button Styling */
 #login-container .btn-primary {
-    background-color: #7D6E57;  /* ✅ Matches warm brown theme */
+    background-color: #7D6E57;  /*  Matches warm brown theme */
     border: none;
 }
 
 #login-container .btn-primary:hover {
-    background-color: #5D4E40;  /* ✅ Darker hover effect */
+    background-color: #5D4E40;  /*  Darker hover effect */
 }
 
-/* ✅ Register Link Styling */
+/*  Register Link Styling */
 #login-container a {
     color: #7D6E57;
 }
@@ -166,23 +166,23 @@ body {
     text-decoration: underline;
 }
 
-/* ✅ Register Page Container */
+/*  Register Page Container */
 #register-container {
-    margin-top: 120px;  /* ✅ Matches other pages */
+    margin-top: 120px;  /*  Matches other pages */
     margin-bottom: 80px;
-    max-width: 400px;  /* ✅ Keeps form compact */
+    max-width: 400px;  /*  Keeps form compact */
     padding: 30px;
-    background-color: #FEFDFB;  /* ✅ Matches card background */
+    background-color: #FEFDFB;  /*  Matches card background */
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* ✅ Subtle shadow */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /*  Subtle shadow */
 }
 
-/* ✅ Register Form Styling */
+/*  Register Form Styling */
 #register-container form {
     text-align: left;
 }
 
-/* ✅ Style Form Fields */
+/*  Style Form Fields */
 #register-container input {
     width: 100%;
     padding: 10px;
@@ -190,17 +190,17 @@ body {
     border-radius: 5px;
 }
 
-/* ✅ Button Styling */
+/*  Button Styling */
 #register-container .btn-success {
-    background-color: #5A9367;  /* ✅ Soft green to match theme */
+    background-color: #5A9367;  /*  Soft green to match theme */
     border: none;
 }
 
 #register-container .btn-success:hover {
-    background-color: #4A7F5A;  /* ✅ Darker hover effect */
+    background-color: #4A7F5A;  /*  Darker hover effect */
 }
 
-/* ✅ Login Link Styling */
+/*  Login Link Styling */
 #register-container a {
     color: #5A9367;
 }
@@ -208,6 +208,51 @@ body {
 #register-container a:hover {
     color: #4A7F5A;
     text-decoration: underline;
+}
+
+/*  Profile Settings Page */
+#profile-settings-container {
+    margin-top: 120px;  /*  Matches other pages */
+    margin-bottom: 80px;
+    max-width: 500px;  /*  Keeps form compact */
+    padding: 30px;
+    background-color: #FEFDFB;  /*  Matches card background */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /*  Subtle shadow */
+}
+
+/*  Form Input Styling */
+#profile-settings-container input,
+#profile-settings-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/*  Profile Picture Upload Field */
+#profile-settings-container input[type="file"] {
+    border: none;
+}
+
+/*  Button Styling */
+#profile-settings-container .btn-success {
+    background-color: #5A9367;  /*  Soft green to match theme */
+    border: none;
+}
+
+#profile-settings-container .btn-success:hover {
+    background-color: #4A7F5A;  /*  Darker hover effect */
+}
+
+/*  Back Button */
+#profile-settings-container .btn-secondary {
+    background-color: #D4D1C8;
+    color: black;
+}
+
+#profile-settings-container .btn-secondary:hover {
+    background-color: #B8B2A3;
 }
 
 

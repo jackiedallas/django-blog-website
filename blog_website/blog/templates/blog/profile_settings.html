@@ -1,16 +1,31 @@
 {% extends "blog/base.html" %}
 
 {% block content %}
-<div class="container">
-    <h2>Profile Settings</h2>
+<div class="container text-center" id="profile-settings-container">
+    <h2 class="mb-4">Profile Settings</h2>
 
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" class="text-start">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-success">Save Changes</button>
+
+        <!-- Django Form Fields -->
+        <div class="mb-3">
+            <label for="id_username" class="form-label">Username</label>
+            {{ form.username }}
+        </div>
+
+        <div class="mb-3">
+            <label for="id_bio" class="form-label">Bio</label>
+            {{ form.bio }}
+        </div>
+
+        <div class="mb-3">
+            <label for="id_profile_picture" class="form-label">Profile Picture</label>
+            {{ form.profile_picture }}
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">Save Changes</button>
     </form>
 
-    <br>
-    <a href="{% url 'profile' user.username %}" class="btn btn-secondary">Back to Profile</a>
+    <a href="{% url 'profile' user.username %}" class="btn btn-secondary w-100 mt-3">Back to Profile</a>
 </div>
 {% endblock %}
