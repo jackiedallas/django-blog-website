@@ -103,3 +103,14 @@ def create_post(request):
     else:
         form = PostForm()
     return render(request, 'blog/create_post.html', {'form': form})
+
+
+@login_required
+def delete_post(request, post_id):
+    """View to delete a post."""
+    post = get_object_or_404(Post, id=post_id)
+    
+    if request.user == post.author:
+        post.delete()
+        return redirect('profile', username=request.user.username)  # redirect back to profile
+    return redirect('profile', username=request.user.username)
