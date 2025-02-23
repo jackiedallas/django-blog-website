@@ -1,20 +1,40 @@
 {% extends "blog/base.html" %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2 class="text-center">Community ITP Blog Feed</h2>
-    {% for post in posts %}
-        <div class="card mb-3">
-            <div class="card-body">
-                <h4 class="card-title">
-                    <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
-                </h4>
-                <p class="card-text">{{ post.content|truncatewords:30 }}</p>
-                <small class="text-muted">Posted by {{ post.author.username }} on {{ post.created_at }}</small>
+<div class="container">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6" id="top-home-div">
+                <h2 class="text-center">Intro To Python Programming Blog</h2>
+                <p class="text-center">Feel free to create posts and contribute to the blog.</p>            
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9">  <!-- ✅ Ensures the same width as profile & activity sections -->
+                <h4 class="mb-3 text-start">Feed</h4>
+                
+                {% for post in posts %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
+                            </h4>
+                            <p class="card-text">{{ post.content|truncatewords:30 }}</p>
+                            <small class="text-muted">Posted by {{ post.author.username }} on {{ post.created_at }}</small>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p class="text-center">No posts available.</p>
+                {% endfor %}
             </div>
         </div>
-    {% empty %}
-        <p>No posts available.</p>
-    {% endfor %}
+    </div>
 </div>
+
+
 {% endblock %}

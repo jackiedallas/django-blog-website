@@ -20,11 +20,33 @@
     padding-top: 10px;
 }
 
-#top-profile-div {
+/* #top-profile-div {
     display: flex;
-    align-items: center;
+    
 }
 
 .top-profile-div-child {
     justify-content: space-between;
+} */
+
+#top-profile-div, #top-home-div {
+    /* padding: 30px; */
+    margin-top: 100px;
+    margin-bottom: 100px;
+    align-items: center;
+}
+
+#bottom-profile-div {
+    /* margin-top: 100px; */
+    /* margin-bottom: 100px; */
+    /* padding: 30px; */
+    /* height: 300px; */
+    /* display: flex;
+    width: 85%;
+    align-items: center; */
+}
+
+.base-container {
+    /* width: 100vw; */
+    /* height: 100vh; */
 }

@@ -2,35 +2,48 @@
 
 {% block content %}
 <div class="container">
-    <h2>{{ user.username }}</h2>
+    
 
-    <div class="container-fluid" id="top-profile-div">
-        <div class="top-profile-div-child">
-            <img src="{{ profile.profile_picture.url }}" class="rounded-circle" alt="Profile Picture" height="100" width="100">
-        </div>
-        <div class="top-profile-div-child">
-            {% if user == request.user %}
-                <a href="{% url 'profile_settings' %}" class="btn btn-primary">Edit Profile</a>
-            {% endif %}
-        </div>
-    </div>
-
-    <hr>
-
-    <div>
-
-    </div>
-    <h4>Activity</h4>
-    {% for post in posts %}
-        <div class="card mb-3">
-            <div class="card-body">
-                <h4 class="card-title">{{ post.title }}</h4>
-                <p class="card-text">{{ post.content }}</p>
-                <small class="text-muted">Posted on {{ post.created_at }}</small>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6" id="top-profile-div">  <!-- ✅ Now same width as Activity section -->
+                <div class="row">
+                    <div class="col d-flex flex-column align-items-center top-profile-div-child">
+                        <img src="{{ profile.profile_picture.url }}" class="rounded-circle" alt="Profile Picture" height="100" width="100">
+                        <h5 class="mt-2">{{ user.username }}</h5>
+                    </div>
+                    <div class="col d-flex justify-content-end align-items-center top-profile-div-child">
+                        {% if user == request.user %}
+                            <a href="{% url 'profile_settings' %}" class="btn btn-primary">Edit Profile</a>
+                        {% endif %}
+                    </div>
+                </div>
             </div>
         </div>
-    {% empty %}
-        <p>No posts yet.</p>
-    {% endfor %}
+    </div>
+    
+
+    <!-- <hr> -->
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9 text-center" id="bottom-profile-div">
+                <h4 class="mb-3 text-start">Activity</h4>
+                {% for post in posts %}
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ post.title }}</h4>
+                            <p class="card-text">{{ post.content }}</p>
+                            <small class="text-muted">Posted on {{ post.created_at }}</small>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p>No posts yet.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
+    
 </div>
 {% endblock %}
