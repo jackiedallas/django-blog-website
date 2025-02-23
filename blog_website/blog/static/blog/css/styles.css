@@ -1,4 +1,4 @@
-/* ✅ General Page Styling */
+/*  General Page Styling */
 body {
     background-color: #F8F7F2;
     font-family: 'Inter', sans-serif;
@@ -10,19 +10,19 @@ h1, h2, h3, h4, h5, h6 {
     /* font-family: 'Poppins', sans-serif; */
 }
 
-/* ✅ Navbar Styling */
+/*  Navbar Styling */
 .navbar {
     background-color: #D4D1C8;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* ✅ Align Profile Dropdown */
+/*  Align Profile Dropdown */
 #profileDropdown {
     display: flex;
     align-items: center;
 }
 
-/* ✅ Navbar Links */
+/*  Navbar Links */
 #me-dropdown, #home-feed {
     font-size: 0.8rem;
     font-weight: 500;
@@ -37,25 +37,25 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 10px;
 }
 
-/* ✅ Page Containers */
+/*  Page Containers */
 .base-container {
     margin-top: 120px;
     margin-bottom: 80px;
 }
 
-/* ✅ Card Styling */
+/*  Card Styling */
 .card {
     background-color: #FEFDFB;
     border-radius: 8px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* ✅ Profile Page Layout */
+/*  Profile Page Layout */
 #profile-container, #home-feed-container {
     max-width: 600px;
 }
 
-/* ✅ Profile Header */
+/*  Profile Header */
 .profile-header {
     background-color: #FFFFFF;
     border-radius: 10px;
@@ -64,7 +64,7 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* ✅ Profile Picture */
+/*  Profile Picture */
 .profile-pic {
     width: 80px;
     height: 80px;
@@ -81,7 +81,7 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid #ddd;
 }
 
-/* ✅ Create Post Box */
+/*  Create Post Box */
 .create-post-card {
     background-color: #FEFDFB;
     border-radius: 10px;
@@ -89,7 +89,7 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* ✅ Post Card Styling */
+/*  Post Card Styling */
 .post-card {
     background-color: #FFFFFF;
     border-radius: 10px;
@@ -98,7 +98,7 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* ✅ Post Title & Content */
+/*  Post Title & Content */
 .post-title {
     font-size: 1.1rem;
     font-weight: bold;
@@ -111,14 +111,14 @@ h1, h2, h3, h4, h5, h6 {
     color: #333;
 }
 
-/* ✅ Post Actions */
+/*  Post Actions */
 .post-card .btn {
     font-size: 0.9rem;
     padding: 6px 12px;
     border-radius: 20px;
 }
 
-/* ✅ Post Detail Page */
+/*  Post Detail Page */
 #post-detail-container {
     max-width: 700px;
     padding: 30px;
@@ -127,7 +127,7 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* ✅ Comment Styling */
+/*  Comment Styling */
 .comment-card {
     background-color: #F8F7F2;
     border-radius: 8px;
@@ -135,7 +135,7 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* ✅ Comment Form */
+/*  Comment Form */
 #post-detail-container form textarea {
     width: 100%;
     padding: 10px;
@@ -143,7 +143,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 5px;
 }
 
-/* ✅ Login & Register Pages */
+/*  Login & Register Pages */
 #login-container, #register-container {
     max-width: 400px;
     padding: 30px;
@@ -159,7 +159,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 5px;
 }
 
-/* ✅ Buttons */
+/*  Buttons */
 .btn-primary, .btn-success {
     border: none;
     border-radius: 5px;
@@ -169,7 +169,7 @@ h1, h2, h3, h4, h5, h6 {
     filter: brightness(0.9);
 }
 
-/* ✅ Create Post Modal */
+/*  Create Post Modal */
 .modal-content {
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -188,7 +188,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: background-color 0.2s ease-in-out;
 }
 
-/* ✅ Hover effect for better UX */
+/*  Hover effect for better UX */
 #back-icon-img:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
