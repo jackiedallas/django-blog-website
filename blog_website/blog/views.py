@@ -30,7 +30,7 @@ def register(request):
 
 def home(request):
     """View to handle the home page."""
-    posts = Post.objects.filter(published=True).order_by('-created_at')
+    posts = Post.objects.all().order_by('-created_at')
     return render(request, 'blog/home.html', {'posts': posts})
 
 @login_required
