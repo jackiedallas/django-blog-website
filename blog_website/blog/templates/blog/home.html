@@ -51,6 +51,7 @@
                 <!-- Post Form -->
                 <form method="POST" action="{% url 'create_post' %}">
                     {% csrf_token %}
+                    <input type="hidden" name="next" value="{% url 'home' %}">
                     <div class="mb-3">
                         <label for="postTitle" class="form-label">Title</label>
                         <input type="text" class="form-control" id="postTitle" name="title" required>

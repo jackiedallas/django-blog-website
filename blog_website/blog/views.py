@@ -98,7 +98,8 @@ def create_post(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            return redirect('home')
+            next_page = request.POST.get('next', 'home')
+            return redirect(next_page)
     else:
         form = PostForm()
     return render(request, 'blog/create_post.html', {'form': form})
