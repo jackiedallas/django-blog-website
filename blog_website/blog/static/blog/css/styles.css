@@ -92,3 +92,78 @@ body {
     margin-bottom: 10px;
 }
 
+/* ✅ Landing Page Container */
+#landing-container {
+    margin-top: 120px;  /* ✅ Matches profile/home section spacing */
+    margin-bottom: 80px;
+    max-width: 600px;  /* ✅ Keeps content compact */
+}
+
+/* ✅ Navigation Pills Styling */
+#landing-nav .nav-link {
+    font-size: 1rem;
+    padding: 10px 20px;  /* ✅ Increases button size */
+    border-radius: 8px;
+}
+
+#landing-nav .nav-link.active {
+    background-color: #7D6E57;  /* ✅ Matches the warm brown UI theme */
+    color: white;
+}
+
+#landing-nav .nav-link.border {
+    border: 2px solid #7D6E57;  /* ✅ Outlined button for Register */
+    color: #7D6E57;
+    background-color: transparent;
+}
+
+#landing-nav .nav-link.border:hover {
+    background-color: #7D6E57;
+    color: white;
+}
+
+/* ✅ Login Page Container */
+#login-container {
+    margin-top: 120px;  /* ✅ Matches landing/profile/home sections */
+    margin-bottom: 80px;
+    max-width: 400px;  /* ✅ Keeps it centered and compact */
+    padding: 30px;
+    background-color: #FEFDFB;  /* ✅ Matches card background */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* ✅ Subtle shadow */
+}
+
+/* ✅ Login Form Styling */
+#login-container form {
+    text-align: left;
+}
+
+/* ✅ Style Form Fields */
+#login-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* ✅ Button Styling */
+#login-container .btn-primary {
+    background-color: #7D6E57;  /* ✅ Matches warm brown theme */
+    border: none;
+}
+
+#login-container .btn-primary:hover {
+    background-color: #5D4E40;  /* ✅ Darker hover effect */
+}
+
+/* ✅ Register Link Styling */
+#login-container a {
+    color: #7D6E57;
+}
+
+#login-container a:hover {
+    color: #5D4E40;
+    text-decoration: underline;
+}
+
+
