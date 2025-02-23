@@ -1,5 +1,5 @@
 {% extends "blog/base.html" %}
-
+{% load static %}
 {% block content %}
 <div class="container">
     
@@ -10,13 +10,17 @@
                 <div class="row">
                     <div class="col d-flex flex-column align-items-center top-profile-div-child">
                         <img src="{{ profile.profile_picture.url }}" class="rounded-circle" alt="Profile Picture" height="100" width="100">
-                        <h5 class="mt-2">{{ user.username }}</h5>
+                        <div class="d-flex">
+                            <h5 class="me-1">{{ user.username }}</h5>
+                            <a href="{% url 'profile_settings' %}" class="ms-1"><img src="{% static 'blog/images/settings-icon.png' %}" alt="settings" height="15" width="15"></a>
+                        </div>
+                        
                     </div>
-                    <div class="col d-flex justify-content-end align-items-center top-profile-div-child">
+                    <!-- <div class="col d-flex justify-content-end align-items-center top-profile-div-child">
                         {% if user == request.user %}
                             <a href="{% url 'profile_settings' %}" class="btn btn-primary">Edit Profile</a>
                         {% endif %}
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -28,7 +32,10 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-9 text-center" id="bottom-profile-div">
-                <h4 class="mb-3 text-start">Activity</h4>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-start">Activity</h4>
+                    <button class="btn btn-outline-primary">Create Post</button>
+                </div>
                 {% for post in posts %}
                     <div class="card mb-3">
                         <div class="card-body">
