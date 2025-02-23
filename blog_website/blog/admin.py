@@ -10,4 +10,3 @@ class CommentAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Post)
 admin.site.register(Comment, CommentAdmin)
-admin.site.register(Profile)
