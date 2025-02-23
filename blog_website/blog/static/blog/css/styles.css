@@ -1,279 +1,133 @@
-/*  Light Background */
+/* ✅ General Page Styling */
 body {
     background-color: #F8F7F2;
+    font-family: 'Inter', sans-serif;
+    /* font-family: 'Playfair Display', serif; */
 }
 
-/*  Navbar Styling */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lora', serif;
+    /* font-family: 'Poppins', sans-serif; */
+}
+
+/* ✅ Navbar Styling */
 .navbar {
     background-color: #D4D1C8;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  /*  Adds a soft shadow */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/*  Align Profile Dropdown Properly */
+/* ✅ Align Profile Dropdown */
 #profileDropdown {
     display: flex;
     align-items: center;
 }
 
-/*  Smaller Font for "Me" and "Home Feed" */
-#me-dropdown,
-#home-feed {
-    font-size: 0.8rem;  /*  More consistent small font */
+/* ✅ Navbar Links */
+#me-dropdown, #home-feed {
+    font-size: 0.8rem;
     font-weight: 500;
 }
 
-/*  Evenly Spaced Navbar Items */
 #position-nav-items {
-    justify-content: space-evenly;    
-    align-items: center;  /*  Ensures all items align vertically */
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-/*  Fix Navbar Dropdown Alignment */
 .position-nav-link-dropdown {
     padding-top: 10px;
 }
 
-/*  Card Styling */
+/* ✅ Page Containers */
+.base-container {
+    margin-top: 120px;
+    margin-bottom: 80px;
+}
+
+/* ✅ Card Styling */
 .card {
     background-color: #FEFDFB;
-    border-radius: 8px;  /*  Adds rounded corners */
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);  /*  Subtle shadow for depth */
-}
-
-/*  Profile & Home Section Spacing */
-#top-profile-div, 
-#top-home-div {
-    margin-top: 100px;
-    margin-bottom: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;  /*  Centers content horizontally */
-}
-
-/*  Profile Section Layout */
-#top-profile-div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;  /*  Prevents breaking on smaller screens */
-}
-
-/*  Keeps Profile Image, Username, and Bio in One Line */
-.top-profile-div-child {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/*  Ensures Bio Stays on the Right */
-.flex-grow-1 {
-    max-width: 65%;  /*  Limits bio width to prevent overflow */
-}
-
-/*  Fix Button Alignment in Profile Dropdown */
-.dropdown-menu .dropdown-item form {
-    display: inline;
-}
-
-/*  Ensures Modals Look Clean */
-.modal-content {
-    border-radius: 10px;  /*  Slight rounding for modern UI */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /*  Adds depth */
-}
-
-/*  Fix Create Post Button Alignment */
-#top-home-div .btn,
-#top-profile-div .btn {
-    float: right;  /*  Ensures button aligns properly */
-}
-
-/*  Improve Spacing for Feed */
-#top-home-div h4 {
-    margin-bottom: 10px;
-}
-
-/*  Landing Page Container */
-#landing-container {
-    margin-top: 120px;  /*  Matches profile/home section spacing */
-    margin-bottom: 80px;
-    max-width: 600px;  /*  Keeps content compact */
-}
-
-/*  Navigation Pills Styling */
-#landing-nav .nav-link {
-    font-size: 1rem;
-    padding: 10px 20px;  /*  Increases button size */
     border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-#landing-nav .nav-link.active {
-    background-color: #7D6E57;  /*  Matches the warm brown UI theme */
-    color: white;
+/* ✅ Profile Page Layout */
+#profile-container, #home-feed-container {
+    max-width: 600px;
 }
 
-#landing-nav .nav-link.border {
-    border: 2px solid #7D6E57;  /*  Outlined button for Register */
-    color: #7D6E57;
-    background-color: transparent;
-}
-
-#landing-nav .nav-link.border:hover {
-    background-color: #7D6E57;
-    color: white;
-}
-
-/*  Login Page Container */
-#login-container {
-    margin-top: 120px;  /*  Matches landing/profile/home sections */
-    margin-bottom: 80px;
-    max-width: 400px;  /*  Keeps it centered and compact */
-    padding: 30px;
-    background-color: #FEFDFB;  /*  Matches card background */
+/* ✅ Profile Header */
+.profile-header {
+    background-color: #FFFFFF;
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /*  Subtle shadow */
-}
-
-/*  Login Form Styling */
-#login-container form {
-    text-align: left;
-}
-
-/*  Style Form Fields */
-#login-container input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/*  Button Styling */
-#login-container .btn-primary {
-    background-color: #7D6E57;  /*  Matches warm brown theme */
     border: none;
+    padding: 20px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-#login-container .btn-primary:hover {
-    background-color: #5D4E40;  /*  Darker hover effect */
+/* ✅ Profile Picture */
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
 }
 
-/*  Register Link Styling */
-#login-container a {
-    color: #7D6E57;
+.profile-pic-sm {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ddd;
 }
 
-#login-container a:hover {
-    color: #5D4E40;
-    text-decoration: underline;
-}
-
-/*  Register Page Container */
-#register-container {
-    margin-top: 120px;  /*  Matches other pages */
-    margin-bottom: 80px;
-    max-width: 400px;  /*  Keeps form compact */
-    padding: 30px;
-    background-color: #FEFDFB;  /*  Matches card background */
+/* ✅ Create Post Box */
+.create-post-card {
+    background-color: #FEFDFB;
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /*  Subtle shadow */
-}
-
-/*  Register Form Styling */
-#register-container form {
-    text-align: left;
-}
-
-/*  Style Form Fields */
-#register-container input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/*  Button Styling */
-#register-container .btn-success {
-    background-color: #5A9367;  /*  Soft green to match theme */
     border: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-#register-container .btn-success:hover {
-    background-color: #4A7F5A;  /*  Darker hover effect */
-}
-
-/*  Login Link Styling */
-#register-container a {
-    color: #5A9367;
-}
-
-#register-container a:hover {
-    color: #4A7F5A;
-    text-decoration: underline;
-}
-
-/*  Profile Settings Page */
-#profile-settings-container {
-    margin-top: 120px;  /*  Matches other pages */
-    margin-bottom: 80px;
-    max-width: 500px;  /*  Keeps form compact */
-    padding: 30px;
-    background-color: #FEFDFB;  /*  Matches card background */
+/* ✅ Post Card Styling */
+.post-card {
+    background-color: #FFFFFF;
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /*  Subtle shadow */
-}
-
-/*  Form Input Styling */
-#profile-settings-container input,
-#profile-settings-container textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/*  Profile Picture Upload Field */
-#profile-settings-container input[type="file"] {
     border: none;
+    padding: 15px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/*  Button Styling */
-#profile-settings-container .btn-success {
-    background-color: #5A9367;  /*  Soft green to match theme */
-    border: none;
-}
-
-#profile-settings-container .btn-success:hover {
-    background-color: #4A7F5A;  /*  Darker hover effect */
-}
-
-/*  Back Button */
-#profile-settings-container .btn-secondary {
-    background-color: #D4D1C8;
-    color: black;
-}
-
-#profile-settings-container .btn-secondary:hover {
-    background-color: #B8B2A3;
-}
-
-/*  Post Detail Page Container */
-#post-detail-container {
-    margin-top: 120px;  /*  Matches other pages */
-    margin-bottom: 80px;
-    max-width: 700px;  /*  Keeps content readable */
-    padding: 30px;
-    background-color: #FEFDFB;  /*  Matches card background */
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /*  Subtle shadow */
-}
-
-/*  Post Content Styling */
-.post-content {
+/* ✅ Post Title & Content */
+.post-title {
     font-size: 1.1rem;
-    line-height: 1.6;
-    text-align: justify;
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-/*  Comment Card Styling */
+.post-content {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+/* ✅ Post Actions */
+.post-card .btn {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+/* ✅ Post Detail Page */
+#post-detail-container {
+    max-width: 700px;
+    padding: 30px;
+    background-color: #FEFDFB;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Comment Styling */
 .comment-card {
     background-color: #F8F7F2;
     border-radius: 8px;
@@ -281,7 +135,7 @@ body {
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/*  Comment Form Styling */
+/* ✅ Comment Form */
 #post-detail-container form textarea {
     width: 100%;
     padding: 10px;
@@ -289,23 +143,34 @@ body {
     border-radius: 5px;
 }
 
-/*  Button Styling */
-#post-detail-container .btn-primary {
-    background-color: #7D6E57;  /*  Matches theme */
+/* ✅ Login & Register Pages */
+#login-container, #register-container {
+    max-width: 400px;
+    padding: 30px;
+    background-color: #FEFDFB;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#login-container input, #register-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* ✅ Buttons */
+.btn-primary, .btn-success {
     border: none;
+    border-radius: 5px;
 }
 
-#post-detail-container .btn-primary:hover {
-    background-color: #5D4E40;
+.btn-primary:hover, .btn-success:hover {
+    filter: brightness(0.9);
 }
 
-#post-detail-container .btn-secondary {
-    background-color: #D4D1C8;
-    color: black;
+/* ✅ Create Post Modal */
+.modal-content {
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
-
-#post-detail-container .btn-secondary:hover {
-    background-color: #B8B2A3;
-}
-
-

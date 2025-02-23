@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load static %}
 
 {% block content %}
 <div class="container">
@@ -7,36 +8,50 @@
         <div class="row justify-content-center">
             <div class="col-md-6" id="top-home-div">
                 <h2 class="text-center">Intro To Python Programming Blog</h2>
-                <p class="text-center">Feel free to create posts and contribute to the blog.</p>            
+                <p class="text-center">Feel free to create posts and contribute to the blog.</p>
             </div>
-            
+
         </div>
     </div>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-9">  <!--  Ensures the same width as profile & activity sections -->
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-start">Feed</h4>
-                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createPostModal">Create Post</button>
-                </div>
-                
-                
-                {% for post in posts %}
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
-                            </h4>
-                            <p class="card-text">{{ post.content|truncatewords:30 }}</p>
-                            <small class="text-muted">Posted by {{ post.author.username }} on {{ post.created_at }}</small>
-                        </div>
-                    </div>
-                {% empty %}
-                    <p class="text-center">No posts available.</p>
-                {% endfor %}
+    <div class="container" id="home-feed-container">
+        <!-- Create Post Section -->
+        {% if user.is_authenticated %}
+        <div class="card create-post-card p-3 mb-4">
+            <div class="d-flex align-items-center">
+                <img src="{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% else %}{% static 'blog/images/default-profile.png' %}{% endif %}"
+                    class="rounded-circle me-2" height="40" width="40" alt="Profile">
+                <button class="btn btn-light w-100 text-start" data-bs-toggle="modal"
+                    data-bs-target="#createPostModal">What's on your mind?</button>
             </div>
         </div>
+        {% endif %}
+
+        <!-- Post Feed -->
+        {% for post in posts %}
+        <div class="card post-card mb-3">
+            <div class="card-body">
+                <div class="d-flex align-items-center mb-2">
+                    <img src="{% if post.author.profile.profile_picture %}{{ post.author.profile.profile_picture.url }}{% else %}{% static 'blog/images/default-profile.png' %}{% endif %}"
+                        class="rounded-circle me-2" height="40" width="40" alt="Profile">
+                    <div>
+                        <h6 class="mb-0 fw-bold">{{ post.author.username }}</h6>
+                        <small class="text-muted">{{ post.created_at }}</small>
+                    </div>
+                </div>
+
+                <h5 class="post-title">{{ post.title }}</h5>
+                <p class="post-content">{{ post.content|truncatewords:40 }}</p>
+
+                <div class="d-flex justify-content-between">
+                    <a href="{% url 'post_detail' post.slug %}" class="btn btn-sm btn-outline-primary">Read More</a>
+                    <button class="btn btn-sm btn-outline-secondary">Like</button>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center text-muted">No posts yet. Be the first to share!</p>
+        {% endfor %}
     </div>
 </div>
 <!-- Bootstrap Modal -->
