@@ -1,43 +1,94 @@
+/*  Light Background */
 body {
     background-color: #F8F7F2;
 }
 
+/*  Navbar Styling */
 .navbar {
     background-color: #D4D1C8;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);  /*  Adds a soft shadow */
 }
 
+/*  Align Profile Dropdown Properly */
 #profileDropdown {
     display: flex;
     align-items: center;
-    
 }
 
-#me-dropdown {
-    font-size: x-small;
-    flex: auto;
-}
-
+/*  Smaller Font for "Me" and "Home Feed" */
+#me-dropdown,
 #home-feed {
-    font-size: x-small;
-    flex: auto;
-    /* text-align: center; */
+    font-size: 0.8rem;  /*  More consistent small font */
+    font-weight: 500;
 }
 
+/*  Evenly Spaced Navbar Items */
 #position-nav-items {
     justify-content: space-evenly;    
+    align-items: center;  /*  Ensures all items align vertically */
 }
 
+/*  Fix Navbar Dropdown Alignment */
 .position-nav-link-dropdown {
     padding-top: 10px;
 }
 
+/*  Card Styling */
 .card {
     background-color: #FEFDFB;
+    border-radius: 8px;  /*  Adds rounded corners */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);  /*  Subtle shadow for depth */
 }
 
-#top-profile-div, #top-home-div {
+/*  Profile & Home Section Spacing */
+#top-profile-div, 
+#top-home-div {
     margin-top: 100px;
     margin-bottom: 100px;
+    display: flex;
     align-items: center;
+    justify-content: center;  /*  Centers content horizontally */
+}
+
+/*  Profile Section Layout */
+#top-profile-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;  /*  Prevents breaking on smaller screens */
+}
+
+/*  Keeps Profile Image, Username, and Bio in One Line */
+.top-profile-div-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*  Ensures Bio Stays on the Right */
+.flex-grow-1 {
+    max-width: 65%;  /*  Limits bio width to prevent overflow */
+}
+
+/*  Fix Button Alignment in Profile Dropdown */
+.dropdown-menu .dropdown-item form {
+    display: inline;
+}
+
+/*  Ensures Modals Look Clean */
+.modal-content {
+    border-radius: 10px;  /*  Slight rounding for modern UI */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /*  Adds depth */
+}
+
+/*  Fix Create Post Button Alignment */
+#top-home-div .btn,
+#top-profile-div .btn {
+    float: right;  /*  Ensures button aligns properly */
+}
+
+/*  Improve Spacing for Feed */
+#top-home-div h4 {
+    margin-bottom: 10px;
 }
 

@@ -37,19 +37,19 @@ def home(request):
 def profile(request, username):
     """View to display and update user profile."""
     user = get_object_or_404(User, username=username)
-    profile, created = Profile.objects.get_or_create(user=user)  # ✅ Ensure profile exists
+    profile, created = Profile.objects.get_or_create(user=user)  #  Ensure profile exists
     posts = Post.objects.filter(author=user).order_by('-created_at')
 
-    form = None  # ✅ Ensure form is always defined
+    form = None  #  Ensure form is always defined
 
     if request.user == user:
         if request.method == 'POST':
-            form = ProfileUpdateForm(request.POST, request.FILES, instance=profile)  # ✅ Handle image uploads
+            form = ProfileUpdateForm(request.POST, request.FILES, instance=profile)  #  Handle image uploads
             if form.is_valid():
                 form.save()
-                return redirect('profile', username=user.username)  # ✅ Refresh profile page
+                return redirect('profile', username=user.username)  #  Refresh profile page
         else:
-            form = ProfileUpdateForm(instance=profile)  # ✅ Assign form even if no submission
+            form = ProfileUpdateForm(instance=profile)  #  Assign form even if no submission
 
     return render(request, 'blog/profile.html', {'user': user, 'profile': profile, 'posts': posts, 'form': form})
 
@@ -71,20 +71,20 @@ def profile_settings(request):
 def post_detail(request, slug):
     """View to display a full blog post and its comments."""
     post = get_object_or_404(Post, slug=slug)
-    comments = post.comments.filter(approved=True).order_by('-created_at')  # ✅ Get approved comments
+    comments = post.comments.filter(approved=True).order_by('-created_at')  #  Get approved comments
     form = CommentForm()
 
     if request.method == "POST":
-        if request.user.is_authenticated:  # ✅ Ensure user is logged in before posting a comment
+        if request.user.is_authenticated:  #  Ensure user is logged in before posting a comment
             form = CommentForm(request.POST)
             if form.is_valid():
                 comment = form.save(commit=False)
                 comment.post = post
-                comment.author = request.user  # ✅ Assign the logged-in user as the author
+                comment.author = request.user  #  Assign the logged-in user as the author
                 comment.save()
-                return redirect('post_detail', slug=post.slug)  # ✅ Refresh page after submission
+                return redirect('post_detail', slug=post.slug)  #  Refresh page after submission
         else:
-            return redirect('login')  # ✅ Redirect unauthenticated users to login before commenting
+            return redirect('login')  #  Redirect unauthenticated users to login before commenting
 
     return render(request, 'blog/post_detail.html', {'post': post, 'comments': comments, 'form': form})
 
