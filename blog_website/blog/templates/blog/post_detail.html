@@ -5,11 +5,11 @@
 <div class="container position-relative" id="post-detail-container">
     <!--  Back Button (Top-Right) -->
     {% if request.GET.next == "profile" %}
-        <a href="{% url 'profile' post.author.username %}" class="btn" id="back-icon">
+        <a href="{% url 'profile' post.author.username %}" class="btn border-0" id="back-icon">
             <img src="{% static 'blog/images/back-icon.png' %}" alt="Back" id="back-icon-img">
         </a>
     {% else %}
-        <a href="{% url 'home' %}" class="btn">
+        <a href="{% url 'home' %}" class="btn border-0">
             <img src="{% static 'blog/images/back-icon.png' %}" alt="Back" id="back-icon-img">
         </a>
     {% endif %}
