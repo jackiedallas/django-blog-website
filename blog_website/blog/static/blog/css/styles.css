@@ -166,4 +166,48 @@ body {
     text-decoration: underline;
 }
 
+/* ✅ Register Page Container */
+#register-container {
+    margin-top: 120px;  /* ✅ Matches other pages */
+    margin-bottom: 80px;
+    max-width: 400px;  /* ✅ Keeps form compact */
+    padding: 30px;
+    background-color: #FEFDFB;  /* ✅ Matches card background */
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* ✅ Subtle shadow */
+}
+
+/* ✅ Register Form Styling */
+#register-container form {
+    text-align: left;
+}
+
+/* ✅ Style Form Fields */
+#register-container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* ✅ Button Styling */
+#register-container .btn-success {
+    background-color: #5A9367;  /* ✅ Soft green to match theme */
+    border: none;
+}
+
+#register-container .btn-success:hover {
+    background-color: #4A7F5A;  /* ✅ Darker hover effect */
+}
+
+/* ✅ Login Link Styling */
+#register-container a {
+    color: #5A9367;
+}
+
+#register-container a:hover {
+    color: #4A7F5A;
+    text-decoration: underline;
+}
+
 
