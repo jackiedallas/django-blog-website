@@ -174,3 +174,22 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+#back-icon-img {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    border: 1px;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* ✅ Hover effect for better UX */
+#back-icon-img:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
