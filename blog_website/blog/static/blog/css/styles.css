@@ -17,11 +17,14 @@ body {
     flex: auto;
 }
 
-#position-nav-items {
-    justify-content: space-evenly;
-    /* align-items: center; */
-    
+#home-feed {
+    font-size: x-small;
+    flex: auto;
+    /* text-align: center; */
+}
 
+#position-nav-items {
+    justify-content: space-evenly;    
 }
 
 .position-nav-link-dropdown {
@@ -33,23 +36,8 @@ body {
 }
 
 #top-profile-div, #top-home-div {
-    /* padding: 30px; */
     margin-top: 100px;
     margin-bottom: 100px;
     align-items: center;
 }
 
-#bottom-profile-div {
-    /* margin-top: 100px; */
-    /* margin-bottom: 100px; */
-    /* padding: 30px; */
-    /* height: 300px; */
-    /* display: flex;
-    width: 85%;
-    align-items: center; */
-}
-
-.base-container {
-    /* width: 100vw; */
-    /* height: 100vh; */
-}
