@@ -87,3 +87,18 @@ def post_detail(request, slug):
             return redirect('login')  # ✅ Redirect unauthenticated users to login before commenting
 
     return render(request, 'blog/post_detail.html', {'post': post, 'comments': comments, 'form': form})
+
+
+@login_required
+def create_post(request):
+    """View to handle creating a new blog post."""
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return redirect('home')
+    else:
+        form = PostForm()
+    return render(request, 'blog/create_post.html', {'form': form})
