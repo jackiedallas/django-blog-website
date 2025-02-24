@@ -88,13 +88,13 @@
                     button.addEventListener("click", function () {
                         let isExpanded = target.classList.contains("show");
 
-                        // ✅ Instantly swap the icon when clicked
+                        //  Instantly swap the icon when clicked
                         icon.src = isExpanded 
                             ? "{% static 'blog/images/more-icon.png' %}"  // Switch to "More" when collapsing
                             : "{% static 'blog/images/collapse-icon.png' %}";  // Show "Collapse" when expanding
                     });
 
-                    // ✅ Ensure Bootstrap Events Also Sync Icon State
+                    //  Ensure Bootstrap Events Also Sync Icon State
                     target.addEventListener("shown.bs.collapse", () => {
                         icon.src = "{% static 'blog/images/collapse-icon.png' %}";  // Ensure it's "Collapse" after expanding
                     });
