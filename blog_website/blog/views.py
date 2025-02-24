@@ -114,3 +114,17 @@ def delete_post(request, post_id):
         post.delete()
         return redirect('profile', username=request.user.username)  # redirect back to profile
     return redirect('profile', username=request.user.username)
+
+
+@login_required
+def edit_post(request, post_id):
+    """Allow users to edit their own posts via modal."""
+    post = get_object_or_404(Post, id=post_id, author=request.user)
+
+    if request.method == "POST":
+        post.title = request.POST["title"]
+        post.content = request.POST["content"]
+        post.save()
+        return redirect("profile", username=request.user.username)  # Redirect back to profile
+
+    return redirect("profile", username=request.user.username)
