@@ -1,0 +1,128 @@
+{% load static %}
+
+<div class="container">
+    {% if show_create_post and user.is_authenticated %}
+        <!-- Create Post Section -->
+        <div class="card create-post-card p-3 mb-4">
+            <div class="d-flex align-items-center">
+                <img src="{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% else %}{% static 'blog/images/default-profile.png' %}{% endif %}"
+                    class="rounded-circle me-2 profile-pic-sm" alt="Profile">
+                <button class="btn btn-light w-100 text-start" data-bs-toggle="modal"
+                    data-bs-target="#createPostModal">What's on your mind?</button>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Post Feed -->
+    {% for post in posts %}
+        <div class="card post-card mb-3">
+            <div class="card-body">
+                <!-- Post Title -->
+                <h5 class="post-title">{{ post.title }}</h5>
+
+                <!-- Post Preview -->
+                <p class="post-content">{{ post.content|truncatewords:40 }}</p>
+                <small class="text-muted">Posted by {{ post.author.username }} on {{ post.created_at }}</small>
+
+                <!-- Expand/Collapse Button -->
+                <div class="d-flex justify-content-between mt-2">
+                    <button class="btn p-0 border-0 bg-transparent toggle-details" data-bs-toggle="collapse"
+                        data-bs-target="#postDetails{{ post.id }}">
+                        <img src="{% static 'blog/images/more-icon.png' %}" alt="More" height="20" width="20" class="toggle-icon">
+                    </button>
+
+                    {% if post.author == request.user %}
+                        <button type="button" class="btn p-0 border-0 bg-transparent" data-bs-toggle="modal" data-bs-target="#editPostModal{{ post.id }}">
+                            <img src="{% static 'blog/images/edit-icon.png' %}" alt="Edit" height="20" width="20">
+                        </button>
+                        <button type="button" class="btn p-0 border-0 bg-transparent" data-bs-toggle="modal"
+                            data-bs-target="#confirmDeleteModal{{ post.id }}">
+                            <img src="{% static 'blog/images/delete-icon.png' %}" alt="Delete" height="20" width="20">
+                        </button>
+                    {% endif %}
+                </div>
+
+                <!-- Expandable Post Details & Comments -->
+                <div class="collapse mt-3" id="postDetails{{ post.id }}">
+                    <p class="full-post-content">{{ post.content }}</p>
+                    <hr>
+
+                    <!-- Comments Section -->
+                    <h5>Comments</h5>
+                    {% for comment in post.comments.all %}
+                        <div class="card comment-card my-2">
+                            <div class="card-body">
+                                <p class="card-text">{{ comment.body }}</p>
+                                <small class="text-muted">{{ comment.author.username }} on {{ comment.created_at }}</small>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p class="text-muted">No comments yet. Be the first to comment!</p>
+                    {% endfor %}
+                    <hr>
+
+                    <!-- Comment Form -->
+                    {% if user.is_authenticated %}
+                        <h5>Leave a Comment</h5>
+                        <form method="post" action="{% url 'post_detail' post.slug %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                {{ form.body }}
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm">Submit Comment</button>
+                        </form>
+                    {% else %}
+                        <p class="text-muted">You must <a href="{% url 'login' %}" class="text-decoration-none fw-bold">log in</a> to leave a comment.</p>
+                    {% endif %}
+                </div>
+
+                {% if post.author == request.user %}
+                    <!-- Delete Confirmation Modal -->
+                    <div class="modal fade" id="confirmDeleteModal{{ post.id }}" tabindex="-1" aria-labelledby="confirmDeleteLabel{{ post.id }}" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="confirmDeleteLabel{{ post.id }}">Confirm Deletion</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to delete this post?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <a href="{% url 'delete_post' post.id %}" class="btn btn-danger">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Edit Post Modal -->
+                    <div class="modal fade" id="editPostModal{{ post.id }}" tabindex="-1" aria-labelledby="editPostModalLabel{{ post.id }}" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editPostModalLabel{{ post.id }}">Edit Post</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" action="{% url 'edit_post' post.id %}">
+                                        {% csrf_token %}
+                                        <div class="mb-3">
+                                            <label for="postTitle{{ post.id }}" class="form-label">Title</label>
+                                            <input type="text" class="form-control" id="postTitle{{ post.id }}" name="title" value="{{ post.title }}" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="postContent{{ post.id }}" class="form-label">Content</label>
+                                            <textarea class="form-control" id="postContent{{ post.id }}" name="content" rows="4" required>{{ post.content }}</textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
