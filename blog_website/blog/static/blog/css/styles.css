@@ -52,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /*  Profile Page Layout */
 #profile-container, #home-feed-container {
-    max-width: 600px;
+    max-width: 700px;
 }
 
 /*  Profile Header */
@@ -87,6 +87,8 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 10px;
     border: none;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
+    max-width: 700px;
+    
 }
 
 /*  Post Card Styling */
